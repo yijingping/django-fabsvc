@@ -7,16 +7,20 @@ Welcome to fabsvc's documentation!
 ==================================
 fabsvc depends on:
 
-1. Fabric: <http://fabfile.org>
+1. Fabric
+
+   http://fabfile.org
 
 2. ssh key  
-   for debian: <http://www.debian.org/devel/passwordlessssh.en.html>
 
-   for centos: <http://wiki.centos.org/HowTos/Network/SecuringSSH#head-9c5717fe7f9bb26332c9d67571200f8c1e4324bc> 
+   for debian: http://www.debian.org/devel/passwordlessssh.en.html
 
-3. Django: <https://www.djangoproject.com/>
+   for centos: http://wiki.centos.org/HowTos/Network/SecuringSSH#head-9c5717fe7f9bb26332c9d67571200f8c1e4324bc
 
-Contents:
+3. Django 
+
+   https://www.djangoproject.com/
+
 
 .. toctree::
    :maxdepth: 2
