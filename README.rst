@@ -21,7 +21,7 @@ Quick start
 
     url(r'^fabsvc/', include('fabsvc.urls')),
 
-3. Run `python manage.py migrate` to create the fabsvc models.
+3. Run `python manage.py syncdb` to create the fabsvc models.
 
 4. Start the development server and visit http://127.0.0.1:8000/admin/
    to create a fabsvc config (you'll need the Admin app enabled).
