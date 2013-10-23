@@ -9,7 +9,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 setup(
     name='django-fabsvc',
     version='0.1',
-    packages=['fabsvc'],
+    packages=['fabsvc', 'fabsvc.templatetags'],
     include_package_data=True,
     license='BSD License',
     description='Fabsvc is a simple Django app to watch and control services on multi host.',

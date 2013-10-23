@@ -3,8 +3,8 @@ import json
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from functools import wraps
-from . import fabfile
-from .models import Service
+from fabsvc import fabfile
+from fabsvc.models import Service
 
 running_pattern = re.compile(r'.* up .*\d+ seconds')
 stoped_pattern = re.compile(r'.* down \d+ seconds, normally up')
@@ -26,7 +26,7 @@ def login_required(raw_func):
         if request.user.is_authenticated():
             return raw_func(request, *args, **kwargs)
         else:
-            return HttpResponseRedirect('/admin/?next=%s' % request.path)
+            return HttpResponseRedirect('/admin/' % request.path)
 
     return inner_func
 
@@ -46,7 +46,8 @@ def index(request):
         else:
             hsmap[host] = [item]
 
-    fabfile.get_status(hsmap)
+    if hsmap:
+        fabfile.get_status(hsmap)
 
     # group service map
     gsmap = {}
@@ -64,9 +65,9 @@ def index(request):
         for item in v:
             state = get_state(item.description)
             if state in ['running']:
-                action = {'name': 'stop', 'url': '/service/?id=%s&action=stop' % item.pk }
+                action = {'name': 'stop', 'url': '/fabsvc/service/?id=%s&action=stop' % item.pk }
             elif state in ['stoped', 'error']:
-                action = {'name': 'start', 'url': '/service/?id=%s&action=start' % item.pk }
+                action = {'name': 'start', 'url': '/fabsvc/service/?id=%s&action=start' % item.pk }
 
             services.append({
                 'state': state, 
@@ -85,7 +86,7 @@ def index(request):
     if data_format == 'json':
         return HttpResponse(json.dumps(res))
     else:
-        return render_to_response('config/index.html', res)
+        return render_to_response('fabsvc/index.html', res)
 
 @login_required
 def service(request):

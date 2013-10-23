@@ -1,5 +1,5 @@
-from config.models import Group, Host, Service 
 from django.contrib import admin
+from fabsvc.models import Group, Host, Service 
 
 class GroupAdmin(admin.ModelAdmin):
     list_display = ('name', )
