@@ -14,7 +14,7 @@ setup(
     license='BSD License',
     description='Fabsvc is a simple Django app to watch and control services on multi host.',
     long_description=README,
-    url='http://github.com/yijingping/fabsvc/',
+    url='http://github.com/yijingping/django-fabsvc/',
     author='Jingping Yi',
     author_email='jingping.yi@gmail.com',
     classifiers=[
