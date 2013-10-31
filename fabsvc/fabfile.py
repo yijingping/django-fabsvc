@@ -7,7 +7,7 @@ env.hosts = ['tiger@192.168.10.96','tiger@192.168.10.85',]
 @task
 def status(hsmap):
     res = []
-    for item in hsmap[env.host]:
+    for item in hsmap['%s@%s' % (env.user, env.host)]:
         item.description = run('svstat %s' % item.path)
 
     return res

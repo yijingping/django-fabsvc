@@ -26,7 +26,7 @@ def login_required(raw_func):
         if request.user.is_authenticated():
             return raw_func(request, *args, **kwargs)
         else:
-            return HttpResponseRedirect('/admin/' % request.path)
+            return HttpResponseRedirect('/admin/?next=%s' % request.path)
 
     return inner_func
 
@@ -96,5 +96,3 @@ def service(request):
     svc = Service.objects.get(pk=sid)
     res = fabfile.do_action(svc, action)
     return HttpResponse(json.dumps(res))
-
-    
