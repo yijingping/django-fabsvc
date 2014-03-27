@@ -8,16 +8,16 @@ env.hosts = ['tiger@192.168.10.96','tiger@192.168.10.85',]
 def status(hsmap):
     res = []
     for item in hsmap['%s@%s' % (env.user, env.host)]:
-        item.description = run('svstat %s' % item.path)
+        item.description = run('sudo svstat %s' % item.path)
 
     return res
 
 @task
 def action(service, action_name):
     if action_name == 'start':
-        res = run('svc -u %s' % service.path)
+        res = run('sudo svc -u %s' % service.path)
     elif action_name == 'stop':
-        res = run('svc -d %s' % service.path)
+        res = run('sudo svc -k %s' % service.path)
     else:
         res = ''
 
