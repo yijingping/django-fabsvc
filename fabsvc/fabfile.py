@@ -8,7 +8,10 @@ env.hosts = ['tiger@192.168.10.96','tiger@192.168.10.85',]
 def status(hsmap):
     res = []
     for item in hsmap['%s@%s' % (env.user, env.host)]:
-        item.description = run('sudo svstat %s' % item.path)
+        try:
+            item.description = run('sudo svstat %s' % item.path)
+        except Exception as e:
+            item.description = str(e)
 
     return res
 
